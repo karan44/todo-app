@@ -1,0 +1,43 @@
+<!Doctype HTML>
+
+<html>
+<head>
+	<title>jQuery to manage Todos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		//Form submit on enter
+		$('form').submit(function () {
+		//Clearing the value so each time user enters, the value clears up.
+    if ($('.newtext').val() !== '') {
+    	//Defining the Variable for input Value to the input form.
+        var input_value = $('.newtext').val();
+        //Using append function to append the input value entered in an unordered list.
+        $('ul').append('<li><a href="">' + input_value + '</a></li>');
+        };
+	    $('.newtext').val('');
+	    return false;
+	});
+
+	$(document).on('click', 'a', function (e) {
+	    e.preventDefault();
+	    //Using .remove to remove the parent of <a link></a> to remove the <Li></li> from list.
+	    $(this).parent().remove();
+	});
+	});
+	</script>
+
+</head>
+<body>
+	
+	<h1>ToDo List</h1>
+	<form>
+    <label>Enter a Todo and hit enter!</label>
+    <input type="text" class="newtext"/>
+	</form>
+	<ul></ul>	
+	
+	
+</body>
+</html>
